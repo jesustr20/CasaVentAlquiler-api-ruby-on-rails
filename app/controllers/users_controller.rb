@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :require_login!, only: :create
   #get/profile
   def show
     render json: current_user
