@@ -7,11 +7,13 @@ class AdvertisementsController < ApplicationController
     render json: @advertisments
   end
 
+  #get/advertisment/id
   def show
     @advertisment = Advertisment.find(params[:id])
     render json: @advertisment
   end
 
+  #post/advertisment
   def create
     @advertisment = current_user.advertisments.new(advertisment_params)
 
@@ -22,6 +24,7 @@ class AdvertisementsController < ApplicationController
     end
   end
 
+  #patch/advertisment/id
   def update
     if @advertisment.update(advertisment_params)
       render json: @advertisment
@@ -30,6 +33,7 @@ class AdvertisementsController < ApplicationController
     end
   end
 
+  #delete/advertisment/id
   def destroy
     @advertisment = current_user.advertisment.find(params[:id])
     @advertisment.destroy
